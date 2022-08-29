@@ -19,6 +19,7 @@ public class Lesson44Server extends BasicServer {
         registerGet("/sample", this::freemarkerSampleHandler);
         registerGet("/books", this::booksHandler);
         registerGet("/tfios", this::bookHandler);
+        registerGet("/emp", this::empHandler);
     }
 
     private static Configuration initFreeMarker() {
@@ -52,6 +53,10 @@ public class Lesson44Server extends BasicServer {
 
     private void bookHandler(HttpExchange exchange) {
         renderTemplate(exchange, "book.html", getBookDataModel());
+    }
+
+    private void empHandler(HttpExchange exchange) {
+        renderTemplate(exchange, "emp.html", getEmpDataModel());
     }
 
     protected void renderTemplate(HttpExchange exchange, String templateFile, Object dataModel) {
@@ -93,5 +98,9 @@ public class Lesson44Server extends BasicServer {
 
     private BookDataModel getBookDataModel() {
         return new BookDataModel();
+    }
+
+    private EmpDataModel getEmpDataModel() {
+        return new EmpDataModel();
     }
 }
